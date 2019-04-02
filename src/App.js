@@ -100,6 +100,7 @@ const Main = (props) => (
     flex: 1,            // fill remaining space (in flex direction)
     height: '100vh',    // match viewport height, autoscroll if needed
     overflow: 'auto',
+    WebkitOverflowScrolling: 'touch',   // inertia on touchscreens
   }}>
     <div style={{ padding: '20px' }} {...props} />
   </div>
