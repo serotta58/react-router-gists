@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Link, Route } from 'react-router-dom';
+import { HashRouter as Router, Link, Route, Redirect } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -49,9 +49,12 @@ class App extends Component {
 }
 
 const Gist = ({ gist }) => {
-  // Guard against chance that there is no gist, such as when reloading page
-  // and the last selected gist has fallen off the list.
-  if (!gist) return null;
+  // If no gist was found in the map, reset the page
+  // This could mean user edited the URL or they refreshed the page
+  // and the previous gist fell off the list.
+  if (!gist) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <div>
